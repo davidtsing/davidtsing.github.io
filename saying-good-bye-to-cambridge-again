@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="在一个二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。">
+<meta name="description" content="Very quietly I take my leaveAs quietly as I came here;Quietly I wave good-byeTo the rosy clouds in the western sky.">
 <meta name="keywords" content="David Tsing, 大道三千,中国科学院, 人工智能, 机器学习, AI, 深度学习, 面试算法, 数学基础">
 <meta property="og:type" content="article">
-<meta property="og:title" content="剑指Offer：二维数组中的查找">
-<meta property="og:url" content="http://davidtsing.com/offer-finding-in-a-two-dimensional-array.html">
+<meta property="og:title" content="Saying Good-bye to Cambridge Again--By Xu Zhimo">
+<meta property="og:url" content="http://davidtsing.com/saying-good-bye-to-cambridge-again">
 <meta property="og:site_name" content="大道三千">
-<meta property="og:description" content="在一个二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。">
+<meta property="og:description" content="Very quietly I take my leaveAs quietly as I came here;Quietly I wave good-byeTo the rosy clouds in the western sky.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-11T09:32:44.600Z">
+<meta property="og:updated_time" content="2018-04-11T09:28:11.383Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="剑指Offer：二维数组中的查找">
-<meta name="twitter:description" content="在一个二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。">
+<meta name="twitter:title" content="Saying Good-bye to Cambridge Again--By Xu Zhimo">
+<meta name="twitter:description" content="Very quietly I take my leaveAs quietly as I came here;Quietly I wave good-byeTo the rosy clouds in the western sky.">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://davidtsing.com/offer-finding-in-a-two-dimensional-array.html"/>
+  <link rel="canonical" href="http://davidtsing.com/saying-good-bye-to-cambridge-again"/>
 
 
 
 
 
-  <title>剑指Offer：二维数组中的查找 | 大道三千</title>
+  <title>Saying Good-bye to Cambridge Again--By Xu Zhimo | 大道三千</title>
   
 
 
@@ -243,7 +243,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://davidtsing.com/offer-finding-in-a-two-dimensional-array.html">
+    <link itemprop="mainEntityOfPage" href="http://davidtsing.com/saying-good-bye-to-cambridge-again">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="David Tsing">
@@ -260,7 +260,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">剑指Offer：二维数组中的查找</h1>
+          <h1 class="post-title" itemprop="name headline">Saying Good-bye to Cambridge Again--By Xu Zhimo</h1>
         
 
         <div class="post-meta">
@@ -272,8 +272,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-11T17:27:56+08:00">
-                2018-04-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-10T20:06:13+08:00">
+                2018-04-10
               </time>
             
 
@@ -295,8 +295,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/剑指Offer/" itemprop="url" rel="index">
-                    <span itemprop="name">剑指Offer</span>
+                  <a href="/categories/english/" itemprop="url" rel="index">
+                    <span itemprop="name">english</span>
                   </a>
                 </span>
 
@@ -332,8 +332,13 @@
       
 
       
-        <p>在一个二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。<a id="more"></a></p>
-<p>注意右上角、左下角的点，很特殊！<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Find</span><span class="params">(<span class="keyword">int</span> target, <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; <span class="built_in">array</span>)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">array</span>.empty() || <span class="built_in">array</span>[<span class="number">0</span>].empty())&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> row = <span class="built_in">array</span>.size();</span><br><span class="line">	<span class="keyword">int</span> col = <span class="built_in">array</span>[<span class="number">0</span>].size();</span><br><span class="line">	<span class="comment">//Initialization [i,j] lower left corner</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = row <span class="number">-1</span>, j = <span class="number">0</span>; i &gt;= <span class="number">0</span> &amp;&amp; j &lt;= col;)&#123;</span><br><span class="line">		<span class="keyword">if</span> (target == <span class="built_in">array</span>[i][j])&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (target &lt; <span class="built_in">array</span>[i][j])&#123;</span><br><span class="line">			--i;</span><br><span class="line">			<span class="keyword">continue</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			++j;</span><br><span class="line">			<span class="keyword">continue</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        <p>Very quietly I take my leave<br>As quietly as I came here;<br>Quietly I wave good-bye<br>To the rosy clouds in the western sky.<br><a id="more"></a></p>
+<p>The golden willows by the riverside<br>Are young brides in the setting sun;<br>Their reflections on the shimmering waves<br>Always linger in the depth of my heart.</p>
+<p>The floating heart growing in the sluge<br>Sways leisurely under the water;<br>In the gentle waves of Cambridge<br>I would be a water plant!</p>
+<p>That pool under the shade of elm trees<br>Holds not water but the rainbow from sky;<br>Shattered to pieces among the duckweeds<br>Is the sediment of a rainbow-like dream.</p>
+<p>To seek a dream? Just to pole a boat upstream<br>To where the green glass is more verdant;<br>Or to have the boat fully loaded with starlight<br>And sing aloud in the splendor of starlight.</p>
+<p>But I cannot sing aloud<br>Quietness is my farewell music;<br>Even summer insects heap silence for me<br>Silent is Cambridge tonight!</p>
+<p>Very quietly I take my leave<br>As quietly as I came here;<br>Gently I flick my sleeves<br>Not even a wisp of cloud will I bring away.</p>
 
       
     </div>
@@ -358,8 +363,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/saying-good-bye-to-cambridge-again.html" rel="next" title="Saying Good-bye to Cambridge Again--By Xu Zhimo">
-                <i class="fa fa-chevron-left"></i> Saying Good-bye to Cambridge Again--By Xu Zhimo
+              <a href="/tensorflow-anaconda-spyder" rel="next" title="TensorFlow、Anaconda & Spyder环境配置">
+                <i class="fa fa-chevron-left"></i> TensorFlow、Anaconda & Spyder环境配置
               </a>
             
           </div>
@@ -367,6 +372,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/offer-finding-in-a-two-dimensional-array" rel="prev" title="剑指Offer：二维数组中的查找">
+                剑指Offer：二维数组中的查找 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>

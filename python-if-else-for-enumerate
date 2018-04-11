@@ -83,7 +83,7 @@
 <meta name="keywords" content="David Tsing, 大道三千,中国科学院, 人工智能, 机器学习, AI, 深度学习, 面试算法, 数学基础">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python enumerate 单行写法...">
-<meta property="og:url" content="http://davidtsing.com/python-if-else-for-enumerate.html">
+<meta property="og:url" content="http://davidtsing.com/python-if-else-for-enumerate">
 <meta property="og:site_name" content="大道三千">
 <meta property="og:description" content="一种简洁写法， 1234def moving_average1(a, w=10):    if len(a) &amp;lt; w:         return a[:]        return [val if idx &amp;lt; w else sum(a[(idx-w):idx])/w for idx, val in enumerate(a)]">
 <meta property="og:locale" content="zh-Hans">
@@ -120,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="http://davidtsing.com/python-if-else-for-enumerate.html"/>
+  <link rel="canonical" href="http://davidtsing.com/python-if-else-for-enumerate"/>
 
 
 
@@ -243,7 +243,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://davidtsing.com/python-if-else-for-enumerate.html">
+    <link itemprop="mainEntityOfPage" href="http://davidtsing.com/python-if-else-for-enumerate">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="David Tsing">
@@ -361,7 +361,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/ubuntu-spark-anaconda.html" rel="next" title="Ubuntu Spark & Anaconda环境搭建">
+              <a href="/ubuntu-spark-anaconda" rel="next" title="Ubuntu Spark & Anaconda环境搭建">
                 <i class="fa fa-chevron-left"></i> Ubuntu Spark & Anaconda环境搭建
               </a>
             
@@ -371,7 +371,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/tensorflow-anaconda-spyder.html" rel="prev" title="TensorFlow、Anaconda & Spyder环境配置">
+              <a href="/tensorflow-anaconda-spyder" rel="prev" title="TensorFlow、Anaconda & Spyder环境配置">
                 TensorFlow、Anaconda & Spyder环境配置 <i class="fa fa-chevron-right"></i>
               </a>
             
