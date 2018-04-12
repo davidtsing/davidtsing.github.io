@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="David Tsing, 大道三千,中国科学院, 人工智能, 机器学习, AI, 深度学习, 面试算法, 数学基础" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Anaconda为Python的一个发行版本，安装十分简单，亦不需要配置环境。在安装Spark之前，我们需要在自己的系统当中先安装上JDK和Scala。">
+<meta name="keywords" content="David Tsing, 大道三千,中国科学院, 人工智能, 机器学习, AI, 深度学习, 面试算法, 数学基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu Spark &amp; Anaconda环境搭建">
+<meta property="og:url" content="http://davidtsing.com/ubuntu-spark-anaconda/index.html">
+<meta property="og:site_name" content="大道三千">
+<meta property="og:description" content="Anaconda为Python的一个发行版本，安装十分简单，亦不需要配置环境。在安装Spark之前，我们需要在自己的系统当中先安装上JDK和Scala。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-04-11T09:57:06.972Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ubuntu Spark &amp; Anaconda环境搭建">
+<meta name="twitter:description" content="Anaconda为Python的一个发行版本，安装十分简单，亦不需要配置环境。在安装Spark之前，我们需要在自己的系统当中先安装上JDK和Scala。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://davidtsing.com/ubuntu-spark-anaconda/"/>
+
+
+
+
+
+  <title>Ubuntu Spark & Anaconda环境搭建 | 大道三千</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">大道三千</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">人工智能（AI），机器学习，深度学习，面试算法，数学基础</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://davidtsing.com/ubuntu-spark-anaconda/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="David Tsing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="大道三千">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Ubuntu Spark & Anaconda环境搭建</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-17T14:49:11+08:00">
+                2018-03-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Spark-Hadoop/" itemprop="url" rel="index">
+                    <span itemprop="name">Spark & Hadoop</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Anaconda为Python的一个发行版本，安装十分简单，亦不需要配置环境。在安装Spark之前，我们需要在自己的系统当中先安装上JDK和Scala。</p>
+<a id="more"></a>
+<h1 id="安装JDK"><a href="#安装JDK" class="headerlink" title="安装JDK"></a>安装JDK</h1><p>首先解压JDK</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ tar -xf jdk-8u161-linux-x64.tar.gz</span><br></pre></td></tr></table></figure>
+<p>创建一个目录，并将jdk剪切进去<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo mkdir /usr/lib/jdk</span><br><span class="line">$ sudo mv jdk1.8.0_161 /usr/lib/jdk</span><br></pre></td></tr></table></figure></p>
+<p>打开配置文件/etc/profile<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vi /etc/profile</span><br></pre></td></tr></table></figure></p>
+<p>在尾部加上如下配置，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/usr/lib/jdk/jdk1.8.0_161</span><br><span class="line">export PATH=$&#123;JAVA_HOME&#125;/bin:$PATH</span><br></pre></td></tr></table></figure></p>
+<p>使配置生效后，查看Java是否安装成功？<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ source /etc/profile</span><br><span class="line">$ java -version</span><br></pre></td></tr></table></figure></p>
+<p>java version “1.8.0_161”<br>Java(TM) SE Runtime Environment (build 1.8.0_161-b12)<br>Java HotSpot(TM) 64-Bit Server VM (build 25.161-b12, mixed mode)</p>
+<h1 id="安装Scala"><a href="#安装Scala" class="headerlink" title="安装Scala"></a>安装Scala</h1><p>首先解压scala</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ tar -xf scala-2.12.4.tgz</span><br></pre></td></tr></table></figure>
+<p>创建一个目录，并将scala剪切进去</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo mkdir /usr/lib/scala</span><br><span class="line">$ sudo mv scala-2.12.4 /usr/lib/scala</span><br></pre></td></tr></table></figure>
+<p>打开配置文件/etc/profile</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vi /etc/profile</span><br></pre></td></tr></table></figure>
+<p>在尾部加上如下配置，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export SCALA_HOME=/usr/lib/scala/scala-2.12.4</span><br><span class="line">export PATH=$&#123;SCALA_HOME&#125;/bin:$PATH</span><br></pre></td></tr></table></figure></p>
+<p>使配置生效后，查看Scala是否安装成功？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ source /etc/profile</span><br><span class="line">$ scala -version</span><br></pre></td></tr></table></figure>
+<p>Scala code runner version 2.12.4 – Copyright 2002-2017, LAMP/EPFL and Lightbend, Inc.</p>
+<h1 id="安装Spark"><a href="#安装Spark" class="headerlink" title="安装Spark"></a>安装Spark</h1><p>首先解压Spark</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ tar -xf spark-2.3.0-bin-hadoop2.7.tgz</span><br></pre></td></tr></table></figure>
+<p>创建一个目录，并将Spark剪切进去<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo mkdir /usr/lib/spark</span><br><span class="line">$ sudo mv spark-2.3.0-bin-hadoop2.7 /usr/lib/spark</span><br></pre></td></tr></table></figure></p>
+<p>打开配置文件/etc/profile<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vi /etc/profile</span><br></pre></td></tr></table></figure></p>
+<p>在尾部加上如下配置，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export SPARK_HOME=/usr/lib/spark/spark-2.3.0-bin-hadoop2.7</span><br><span class="line">export PATH=$&#123;SPARK_HOME&#125;/bin:$PATH</span><br></pre></td></tr></table></figure></p>
+<p>使配置生效后，查看Spark是否安装成功？<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ source /etc/profile</span><br><span class="line">$ pyspark --version</span><br></pre></td></tr></table></figure></p>
+<p>Welcome to<br>      <strong>__              </strong><br>     / <strong>/</strong>  <strong>_ ___</strong>/ /<strong><br>    _\ \/ _ \/ _ `/ </strong>/  ‘_/<br>   /<strong>_/ .</strong>/_,_/<em>/ /</em>/_\   version 2.3.0<br>      /_/</p>
+<p>Using Scala version 2.11.8, Java HotSpot(TM) 64-Bit Server VM, 1.8.0_161<br>Branch master<br>Compiled by user sameera on 2018-02-22T19:24:29Z<br>Revision a0d7949896e70f427e7f3942ff340c9484ff0aab<br>Url <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:sameeragarwal/spark.git<br>Type –help for more information.</p>
+<h1 id="配置Python"><a href="#配置Python" class="headerlink" title="配置Python"></a>配置Python</h1><p>打开配置文件/etc/profile<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vi /etc/profile</span><br></pre></td></tr></table></figure></p>
+<p>在尾部加上如下配置，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PYTHONPATH=$&#123;SPARK_HOME&#125;/python:/home/abc/anaconda2/bin/python</span><br></pre></td></tr></table></figure></p>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>完成了以上的所有配置之后，你的/etc/profile文件末尾应该是这样的，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/usr/lib/jdk/jdk1.8.0_161 </span><br><span class="line">export PATH=$&#123;JAVA_HOME&#125;/bin:$PATH</span><br><span class="line"></span><br><span class="line">export SCALA_HOME=/usr/lib/scala/scala-2.12.4</span><br><span class="line">export PATH=$&#123;SCALA_HOME&#125;/bin:$PATH</span><br><span class="line"></span><br><span class="line">export SPARK_HOME=/usr/lib/spark/spark-2.3.0-bin-hadoop2.7</span><br><span class="line">export PATH=$&#123;SPARK_HOME&#125;/bin:$PATH</span><br><span class="line"></span><br><span class="line">export PYTHONPATH=$&#123;SPARK_HOME&#125;/python:/home/abc/anaconda2/bin/python</span><br></pre></td></tr></table></figure></p>
+<p>安装位置应该分别是，</p>
+<ul>
+<li>/usr/lib/jdk</li>
+<li>/usr/lib/scala</li>
+<li>/usr/lib/spark</li>
+</ul>
+<p>另外需要注意的是，运行Spark DEMO时，</p>
+<p>比如<code>lines = sc.textFile(&quot;README.md&quot;)</code>，这里请写明确的地址——如，<code>textFile(&quot;./abc.txt&quot;)</code></p>
+<hr>
+<p>reference: <a href="http://blog.csdn.net/u010171031/article/details/51849562" target="_blank" rel="noopener">http://blog.csdn.net/u010171031/article/details/51849562</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/hadoop-hive-spark/" rel="next" title="Hadoop、Hive、Spark 之间是什么关系？">
+                <i class="fa fa-chevron-left"></i> Hadoop、Hive、Spark 之间是什么关系？
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/python-if-else-for-enumerate/" rel="prev" title="Python enumerate 语法">
+                Python enumerate 语法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">David Tsing</p>
+              <p class="site-description motion-element" itemprop="description">主要研究人工智能，机器学习，深度学习，面试算法，数学基础...涉猎一些分布式与大数据，区块链内容。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/davidtsing" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:davidtsing@aliyun.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装JDK"><span class="nav-number">1.</span> <span class="nav-text">安装JDK</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装Scala"><span class="nav-number">2.</span> <span class="nav-text">安装Scala</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装Spark"><span class="nav-number">3.</span> <span class="nav-text">安装Spark</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置Python"><span class="nav-number">4.</span> <span class="nav-text">配置Python</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#小结"><span class="nav-number">5.</span> <span class="nav-text">小结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">David Tsing</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>
