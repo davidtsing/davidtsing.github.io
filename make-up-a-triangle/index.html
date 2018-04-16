@@ -88,7 +88,7 @@
 <meta property="og:description" content="大前提三角形任意两边之和大于第三边，即可构成一个三角形。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://github.com/davidtsing/image/blob/master/2018/make-up-a-triangle.png">
-<meta property="og:updated_time" content="2018-04-16T12:53:47.340Z">
+<meta property="og:updated_time" content="2018-04-16T12:56:45.997Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一个线段上任意取两点，能组成三角形的概率？">
 <meta name="twitter:description" content="大前提三角形任意两边之和大于第三边，即可构成一个三角形。">
@@ -354,8 +354,13 @@
       
 
       
-        <p>大前提<strong>三角形任意两边之和大于第三边</strong>，即可构成一个三角形。<br><a id="more"></a></p>
-<p>假设三角形三遍分别为x,y,z，线段的长度为L。立即推，<br>$$x+y+z = L$$<br>由，三角形任意两边之和大于第三边可知，<br>$x+y &gt; z = L-x-y$，可以化为$y &gt; -x + \frac{L}{2}$<br>$x+z = x+L-x-y &gt; y$，可以化为$y &lt; \frac{L}{2}$<br>$y+z = y+L-x-y &gt; x$，可以化为$x &lt; \frac{L}{2}$<br>数无形时少直觉，摆出图形，<br><img src="https://github.com/davidtsing/image/blob/master/2018/make-up-a-triangle.png" alt="avatar"><br>根据上图进行概率计算，很显然，阴影部分概率为\frac{\frac{1}{8}}{\frac{1}{2}} = \frac{1}{4}</p>
+        <blockquote>
+<p>大前提<strong>三角形任意两边之和大于第三边</strong>，即可构成一个三角形。</p>
+</blockquote>
+<a id="more"></a>
+<p>假设三角形三遍分别为x,y,z，线段的长度为L。立即推，<br>$$x+y+z = L$$<br>由，三角形任意两边之和大于第三边可知，<br>$x+y &gt; z = L-x-y$，可以化为$y &gt; -x + \frac{L}{2}$<br>$x+z = x+L-x-y &gt; y$，可以化为$y &lt; \frac{L}{2}$<br>$y+z = y+L-x-y &gt; x$，可以化为$x &lt; \frac{L}{2}$</p>
+<p>数无形时少直觉，摆出图形，<br><img src="https://github.com/davidtsing/image/blob/master/2018/make-up-a-triangle.png" alt="make-up-a-triangle.png"></p>
+<p>根据上图进行概率计算，很显然，阴影部分概率为$\frac{\frac{1}{8}}{\frac{1}{2}} = \frac{1}{4}$</p>
 
       
     </div>
