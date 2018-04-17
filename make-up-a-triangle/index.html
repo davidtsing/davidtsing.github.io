@@ -89,7 +89,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://davidtsing.com/make-up-a-triangle/make-up-a-triangle1.png">
 <meta property="og:image" content="http://davidtsing.com/make-up-a-triangle/make-up-a-triangle2.png">
-<meta property="og:updated_time" content="2018-04-17T04:18:21.204Z">
+<meta property="og:updated_time" content="2018-04-17T04:21:07.191Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一个线段上任意取两点，能组成三角形的概率？">
 <meta name="twitter:description" content="大前提 三角形任意两边之和大于第三边，即可构成一个三角形。">
@@ -357,7 +357,7 @@
       
         <p>大前提 <strong>三角形任意两边之和大于第三边</strong>，即可构成一个三角形。</p>
 <a id="more"></a>
-<h1 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h1><p>假设三角形三边分别为$x$,$y$,$z$，线段的长度为$L$。立即推，$x+y+z = L$，$x+y &gt; z$，$x+z &gt; y$，$y+z &gt; x$，且都$&gt;0$<br>由$x$,$y$,$z$确定一个三维平面，<br><img src="/make-up-a-triangle/make-up-a-triangle1.png" title="make-up-a-triangle1.png"><br>$x+y+z = L$即为中间大$△ABC$，其与$x+y &gt; z$，$x+z &gt; y$，$y+z &gt; x$，且都$&gt;0$几个条件最终确定$△IJK$<br>根据上图进行概率计算，很显然，概率为$\frac{S_△IJK}{S_△ABC} = \frac{1}{4}$</p>
+<h1 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h1><p>假设三角形三边分别为$x$,$y$,$z$，线段的长度为$L$。立即推，$x+y+z = L$，$x+y &gt; z$，$x+z &gt; y$，$y+z &gt; x$，且边长都$&gt;0$<br>由$x$,$y$,$z$确定一个三维平面，<br><img src="/make-up-a-triangle/make-up-a-triangle1.png" title="make-up-a-triangle1.png"><br>$x+y+z = L$即为中间大$△ABC$，其与$x+y &gt; z$，$x+z &gt; y$，$y+z &gt; x$，且边长都$&gt;0$几个条件最终确定$△IJK$<br>根据上图进行概率计算，很显然，概率为$\frac{S_{△IJK}}{S_{△ABC}} = \frac{1}{4}$</p>
 <h1 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h1><p>假设三角形三边分别为$x$,$y$,$z$，线段的长度为$L$。立即推，$x+y+z = L$，同时有不等式$x+y &lt; L$，故坐标系中$[x,y]$所构成的总面积并不为$L^2$。而是，$x &gt; 0$，$y &gt; 0$以及$x+y &lt; L$所围成的三角形面积。</p>
 <p>由，三角形任意两边之和大于第三边可知，<br>$x+y &gt; z = L-x-y$，可以化为$y &gt; -x + \frac{L}{2}$<br>$x+z = x+L-x-y &gt; y$，可以化为$y &lt; \frac{L}{2}$<br>$y+z = y+L-x-y &gt; x$，可以化为$x &lt; \frac{L}{2}$</p>
 <p>数无形时少直觉，摆出图形，<br><img src="/make-up-a-triangle/make-up-a-triangle2.png" title="make-up-a-triangle2.png"></p>
