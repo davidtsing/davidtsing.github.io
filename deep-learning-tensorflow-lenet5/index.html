@@ -88,7 +88,7 @@
 <meta property="og:description" content="本文先分析了LeNet-5模型的结构，然后基于LeNet-5模型写了TensorFlow代码实现MNIST数字识别。 LeNet-5模型结构图如下图：">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://davidtsing.com/deep-learning-tensorflow-lenet5/LeNet-5.jpg">
-<meta property="og:updated_time" content="2018-04-19T10:34:00.086Z">
+<meta property="og:updated_time" content="2018-04-19T10:40:31.688Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深度学习之TensorFlow（2）LeNet模型">
 <meta name="twitter:description" content="本文先分析了LeNet-5模型的结构，然后基于LeNet-5模型写了TensorFlow代码实现MNIST数字识别。 LeNet-5模型结构图如下图：">
@@ -372,11 +372,11 @@
 </ul>
 <p>对于一个二维卷积操作而言，其主要作用在 height, width上。经典做法，直接令strides[0]=strides[3]=1，亦即</p>
 <ul>
-<li>strides[0] = 1，也即在 batch 维度上的移动为 1，也就是不跳过任何一个样本，否则当初也不该把它们作为输入（input）；</li>
+<li>strides[0] = 1，也即在 batch 维度上的移动为 1，也就是不跳过任何一个样本，否则当初也不该把它们作为输入；</li>
 <li>strides[3] = 1，也即在 channels 维度上的移动为 1，也就是不跳过任何一个颜色通道。</li>
 </ul>
 <hr>
-<p>References:<br>[1]  MNIST数据集png图片格式下载链接：<a href="http://pan.baidu.com/s/1eRG6TqU" target="_blank" rel="noopener">http://pan.baidu.com/s/1eRG6TqU</a> 密码：uf4m<br>[2] <a href="https://blog.csdn.net/enchanted_zhouh/article/details/76855108" target="_blank" rel="noopener">LeNet-5模型详解及其TensorFlow代码实现</a><br>[3] 李金洪. 深度学习之TensorFlow入门、原理与进阶实战[M]. 北京:机械工业出版社, 2018.<br>[4] <a href="https://blog.csdn.net/lanchunhui/article/details/61615714" target="_blank" rel="noopener">TensorFlow strides 参数讨论</a></p>
+<p>References:<br>[1]  MNIST数据集png图片格式下载链接：<a href="http://pan.baidu.com/s/1eRG6TqU" target="_blank" rel="noopener">http://pan.baidu.com/s/1eRG6TqU</a> 密码：uf4m<br>[2] <a href="https://blog.csdn.net/enchanted_zhouh/article/details/76855108" target="_blank" rel="noopener">LeNet-5模型详解及其TensorFlow代码实现</a><br>[3] 李金洪. 深度学习之TensorFlow入门、原理与进阶实战[M]. 北京:机械工业出版社, 2018.<br>[4] <a href="https://blog.csdn.net/lanchunhui/article/details/61615714" target="_blank" rel="noopener">TensorFlow strides 参数讨论</a><br>[5] 本文源代码获取<a href="https://github.com/davidtsing/CodeLibrary/blob/master/LeNet-5.py" target="_blank" rel="noopener">LeNet5</a></p>
 
       
     </div>
