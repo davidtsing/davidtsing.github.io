@@ -79,19 +79,19 @@
 
 
 
-<meta name="description" content="本文先分析了LeNet-5模型的结构，然后基于LeNet-5模型写了TensorFlow代码实现MNIST数字识别。 LeNet-5模型结构图如下图：">
+<meta name="description" content="1998年，LeCun提出LeNet，并成功应用于美国手写数字识别。但很快，CNN的锋芒被SVM和手工设计的局部特征盖过。本文先分析了LeNet-5模型的结构，然后基于LeNet-5模型写了TensorFlow代码实现MNIST数字识别。 LeNet-5模型结构图如下图：">
 <meta name="keywords" content="David Tsing, 大道三千,中国科学院, 人工智能, 机器学习, AI, 深度学习, 面试算法, 数学基础">
 <meta property="og:type" content="article">
 <meta property="og:title" content="深度学习之TensorFlow（2）LeNet模型">
 <meta property="og:url" content="http://davidtsing.com/deep-learning-tensorflow-lenet5/index.html">
 <meta property="og:site_name" content="大道三千">
-<meta property="og:description" content="本文先分析了LeNet-5模型的结构，然后基于LeNet-5模型写了TensorFlow代码实现MNIST数字识别。 LeNet-5模型结构图如下图：">
+<meta property="og:description" content="1998年，LeCun提出LeNet，并成功应用于美国手写数字识别。但很快，CNN的锋芒被SVM和手工设计的局部特征盖过。本文先分析了LeNet-5模型的结构，然后基于LeNet-5模型写了TensorFlow代码实现MNIST数字识别。 LeNet-5模型结构图如下图：">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://davidtsing.com/deep-learning-tensorflow-lenet5/LeNet-5.jpg">
-<meta property="og:updated_time" content="2018-04-19T10:40:31.688Z">
+<meta property="og:updated_time" content="2018-04-19T12:23:02.933Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深度学习之TensorFlow（2）LeNet模型">
-<meta name="twitter:description" content="本文先分析了LeNet-5模型的结构，然后基于LeNet-5模型写了TensorFlow代码实现MNIST数字识别。 LeNet-5模型结构图如下图：">
+<meta name="twitter:description" content="1998年，LeCun提出LeNet，并成功应用于美国手写数字识别。但很快，CNN的锋芒被SVM和手工设计的局部特征盖过。本文先分析了LeNet-5模型的结构，然后基于LeNet-5模型写了TensorFlow代码实现MNIST数字识别。 LeNet-5模型结构图如下图：">
 <meta name="twitter:image" content="http://davidtsing.com/deep-learning-tensorflow-lenet5/LeNet-5.jpg">
 
 
@@ -354,7 +354,7 @@
       
 
       
-        <p>本文先分析了LeNet-5模型的结构，然后基于LeNet-5模型写了TensorFlow代码实现MNIST数字识别。<br> LeNet-5模型结构图如下图：<br> <img src="/deep-learning-tensorflow-lenet5/LeNet-5.jpg" title="LeNet-5.jpg"><br> <a id="more"></a><br> LeNet-5模型总共有7层。</p>
+        <p>1998年，LeCun提出LeNet，并成功应用于美国手写数字识别。但很快，CNN的锋芒被SVM和手工设计的局部特征盖过。本文先分析了LeNet-5模型的结构，然后基于LeNet-5模型写了TensorFlow代码实现MNIST数字识别。<br> LeNet-5模型结构图如下图：<br> <img src="/deep-learning-tensorflow-lenet5/LeNet-5.jpg" title="LeNet-5.jpg"><br> <a id="more"></a><br> LeNet-5模型总共有7层。</p>
 <h1 id="第一层：卷积层"><a href="#第一层：卷积层" class="headerlink" title="第一层：卷积层"></a>第一层：卷积层</h1><p> 第一层卷积层的输入为原始的图像，原始图像的尺寸为32×32×1。卷积层的过滤器尺寸为5×5，深度为6，不使用全0补充，步长为1。由于没有使用全0补充，所以这一层的输出的尺寸为32-5+1=28，深度为6。这一个卷积层总共有5×5×1×6+6=156个参数，其中6为偏置项参数个数，卷积层的参数个数只和过滤器的尺寸，深度以及当前层节点矩阵的深度有关。因为下一层节点矩阵有28×28×6=4704个节点，每个节点和5×5=25个当前层节点相连，所以本层卷积层总共有4704×(25+1)=122304个连接。<br> <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#Layer1 - Convolution</span></span><br><span class="line"><span class="keyword">with</span> tf.variable_scope(<span class="string">'layer1-conv1'</span>):</span><br><span class="line">	conv1_weights = tf.get_variable(<span class="string">'weight'</span>,[<span class="number">5</span>,<span class="number">5</span>,<span class="number">1</span>,<span class="number">6</span>],initializer=tf.truncated_normal_initializer(stddev=<span class="number">0.1</span>))</span><br><span class="line">	conv1_biases = tf.get_variable(<span class="string">'bias'</span>,[<span class="number">6</span>],initializer=tf.constant_initializer(<span class="number">0.0</span>))</span><br><span class="line">	conv1 = tf.nn.conv2d(input_tensor,conv1_weights,strides=[<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>],padding=<span class="string">'VALID'</span>)</span><br><span class="line">	relu1 = tf.nn.relu(tf.nn.bias_add(conv1,conv1_biases))</span><br></pre></td></tr></table></figure></p>
 <h1 id="第二层：池化层"><a href="#第二层：池化层" class="headerlink" title="第二层：池化层"></a>第二层：池化层</h1><p> 这一层的输入为第一层的输出，是一个28×28×6的节点矩阵。本层采用的过滤器大小为2×2，步长为2，所以本层的输出矩阵大小为14×14×6。<br> <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#Layer2 - Pooling</span></span><br><span class="line"><span class="keyword">with</span> tf.name_scope(<span class="string">'layer2-pool1'</span>):</span><br><span class="line">	pool1 = tf.nn.max_pool(relu1,ksize=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">1</span>],strides=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">1</span>],padding=<span class="string">'SAME'</span>)</span><br></pre></td></tr></table></figure></p>
 <h1 id="第三层：卷积层"><a href="#第三层：卷积层" class="headerlink" title="第三层：卷积层"></a>第三层：卷积层</h1><p>本层的输入矩阵大小为14×14×6，采用的过滤器大小为5×5，深度为16，不使用全0补充，步长为1。这一层的输出的尺寸为14-5+1=10，深度为16，即输出矩阵大小为10×10×16。本层参数有5×5×6×16+16=2416个，连接有10×10×16×(5×5+1)=41600个。<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#Layer3 - Convolution</span></span><br><span class="line"><span class="keyword">with</span> tf.variable_scope(<span class="string">'layer3-conv2'</span>):</span><br><span class="line">	conv2_weights = tf.get_variable(<span class="string">'weight'</span>,[<span class="number">5</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">16</span>],initializer=tf.truncated_normal_initializer(stddev=<span class="number">0.1</span>))</span><br><span class="line">	conv2_biases = tf.get_variable(<span class="string">'bias'</span>,[<span class="number">16</span>],initializer=tf.constant_initializer(<span class="number">0.0</span>))</span><br><span class="line">	conv2 = tf.nn.conv2d(pool1,conv2_weights,strides=[<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>],padding=<span class="string">'VALID'</span>)</span><br><span class="line">	relu2 = tf.nn.relu(tf.nn.bias_add(conv2,conv2_biases))</span><br></pre></td></tr></table></figure></p>
